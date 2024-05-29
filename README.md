@@ -102,8 +102,14 @@ I provided a Makefile to simplify, running, testing and building the application
   - Run
 
     - `git clone https://github.com/GroundZeroGreyHead/scalingo-beehive.git`
+
     - `cd scalingo-beehive`
+
+    - `git submodule update --init --recursive`
+
     - `make run`
+
+  - As soon as the server is up and running
 
   - Then set up
 
