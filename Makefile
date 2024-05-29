@@ -25,6 +25,11 @@ down:
 
 teardown:
 	@docker-compose down --remove-orphans --volumes
-	
+
+db-create:
+	@docker-compose exec beehive_api bundle exec rake db:environment:set RAILS_ENV=development db:drop db:create 
+
 run:
 	@docker-compose up --build
+
+setup:	db-create migrate seed

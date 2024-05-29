@@ -101,14 +101,16 @@ I provided a Makefile to simplify, running, testing and building the application
 
   - Run
 
-    - `git clone `
-    - `cd `
+    - `git clone https://github.com/GroundZeroGreyHead/scalingo-beehive.git`
+    - `cd scalingo-beehive`
     - `make run`
 
-  - Open a new terminal window
+  - Then set up
+
+    - Open a new terminal window
     - If your running this for the first time.
-      `make migrate`
-      `make seed`
+
+      `make setup`
 
 - Running tests
 
@@ -118,9 +120,7 @@ I provided a Makefile to simplify, running, testing and building the application
 
 Don't forget to clean up.
 
-- To stop the current running
-
-  `make down` or `make teardown`
+`make teardown`
 
 🍻 Cheers!
 
