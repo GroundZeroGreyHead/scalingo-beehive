@@ -1,0 +1,23 @@
+version: "3"
+services:
+  web_client:
+    build: ./beehive-web-client
+    ports:
+      - "8080:80"
+    depends_on:
+      - beehive_api
+  db:
+    image: postgres:latest
+    volumes:
+      - ./beehive-api/tmp/db:/var/lib/postgresql/data
+      - ./beehive-api/init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file: .env
+  beehive_api:
+    build: ./beehive-api
+    volumes:
+      - ./beehive-api:/rails
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file: .env

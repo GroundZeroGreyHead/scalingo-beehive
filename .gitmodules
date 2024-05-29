@@ -1,0 +1,6 @@
+[submodule "beehive-api"]
+	path = beehive-api
+	url = https://github.com/GroundZeroGreyHead/scalingo-beehive-api.git
+[submodule "beehive-web-client"]
+	path = beehive-web-client
+	url = https://github.com/GroundZeroGreyHead/scalingo-beehive-web-client.git
