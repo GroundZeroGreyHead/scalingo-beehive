@@ -9,8 +9,8 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - ./beehive-api/tmp/db:/var/lib/postgresql/data
-      - ./beehive-api/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./tmp/db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     env_file: .env
   beehive_api:
     build: ./beehive-api

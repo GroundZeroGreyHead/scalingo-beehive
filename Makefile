@@ -9,9 +9,13 @@ db-create:
 migrate:
 	@docker-compose exec beehive_api bundle exec rake db:migrate
 
+# Reset database (drop, create, migrate, seed)
+reset-db:
+	@docker-compose exec beehive_api bundle exec rake db:drop db:create db:migrate
 # Reset development environment (drop, create, migrate, seed)
-reset-dev:
-	@docker-compose exec beehive_api bundle exec rake db:environment:set RAILS_ENV=development db:drop db:create db:migrate db:seed
+
+prepare_test:
+	@docker-compose exec beehive_api bundle exec rake db:environment:set RAILS_ENV=test db:drop db:create db:migrate
 
 # Seed database
 seed:
@@ -22,11 +26,11 @@ rollback:
 	@docker-compose exec beehive_api bundle exec rake db:rollback STEP=1
 
 # Check migration status
-status:
+migration-status:
 	@docker-compose exec beehive_api bundle exec rake db:migrate:status
 
 # Run tests (includes resetting dev environment)
-test: reset-dev
+test: prepare_test
 	@docker-compose exec beehive_api bundle exec rspec
 
 # Alias for test target
@@ -39,7 +43,7 @@ down:
 
 # Stop containers and services, removing volumes and orphaned networks
 teardown:
-	@docker-compose down --remove-orphans --volumes
+	@docker-compose down --volumes --remove-orphans
 
 # Build and start containers (same as docker-compose up --build)
 run:
